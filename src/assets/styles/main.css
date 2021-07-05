@@ -143,6 +143,8 @@ body {
 }
 
 :root {
+  --bg-color: #fffcf9;
+  --bg-dark-color: #48001e;
   --primary-button-background: #ff5c28;
   --primary-button-color: #fff;
   --secundary-button-background: #ffe0da;
