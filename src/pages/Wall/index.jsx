@@ -1,4 +1,4 @@
-import { MessageBox } from "../../containers/MessageBox";
+import MessageBox from "../../containers/MessageBox";
 import Messages from "../../containers/Messages";
 import styles from "./styles.module.css";
 

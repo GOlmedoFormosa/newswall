@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../redux/messages/actionCreators";
 import styles from "./styles.module.css";
 
-export const MessageBox = () => {
+const MessageBox = ({ createMessage }) => {
   const [message, setMessage] = useState("");
   const sendMessage = (e) => {
     e.preventDefault();
+    createMessage({
+      message,
+      author: 1,
+    });
     setMessage("");
   };
 
@@ -30,3 +36,10 @@ export const MessageBox = () => {
     </div>
   );
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  createMessage: ({ author, message, parentId = null }) =>
+    dispatch(actions.createMessageRequest({ author, message, parentId })),
+});
+
+export default connect(null, mapDispatchToProps)(MessageBox);

@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../redux/messages/actionCreators";
 import { Message } from "./Message";
 import styles from "./styles.module.css";
 
 const Messages = ({ getMessages, messages, fetching, error }) => {
+  useEffect(() => {
+    getMessages();
+  }, [getMessages]);
   return (
     <div className={styles.messages}>
       {fetching ? <div>Loading... </div> : null}
