@@ -7,7 +7,8 @@ const INITIAL_STATE = {
     result: [
       {
         id: 1,
-        message: "A Thread",
+        message:
+          "A Thread lalalla allala alla la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalalala lala a lala al a llallalalalallalalallalala",
         parentId: null,
         author: 1,
       },
@@ -19,7 +20,8 @@ const INITIAL_STATE = {
       },
       {
         id: 3,
-        message: "A Thread",
+        message:
+          "A Thread lalalla allala alla la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalalala lala a lala al a llallalalalallalalallalala",
         parentId: null,
         author: 1,
       },
@@ -31,7 +33,8 @@ const INITIAL_STATE = {
       },
       {
         id: 5,
-        message: "A Thread",
+        message:
+          "A Thread lalalla allala alla la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalalala lala a lala al a llallalalalallalalallalala",
         parentId: null,
         author: 1,
       },

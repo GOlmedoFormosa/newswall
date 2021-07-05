@@ -1,10 +1,11 @@
 import { connect } from "react-redux";
 import * as actions from "../../redux/messages/actionCreators";
 import { Message } from "./Message";
+import styles from "./styles.module.css";
 
 const Messages = ({ getMessages, messages, fetching, error }) => {
   return (
-    <div>
+    <div className={styles.messages}>
       {fetching ? <div>Loading... </div> : null}
       {messages && messages.length > 0
         ? messages.map((m) => <Message {...m} />)

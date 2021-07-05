@@ -1,0 +1,47 @@
+.message {
+  background-color: var(--bg-color);
+  border: 1px solid var(--bg-dark-color);
+  display: flex;
+  margin-bottom: 10px;
+  width: 50%;
+}
+
+.message__number {
+  color: var(--primary-button-background);
+  padding: 20px;
+}
+
+.message__body {
+  flex: 1;
+  padding: 10px;
+}
+
+.message__headerText > h3 {
+  color: gray;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.message__description {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.message__footer {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.message__footer > p {
+  color: var(--primary-button-background);
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.message__footer > svg {
+  cursor: pointer;
+}
