@@ -55,4 +55,15 @@ const createMessageApi = ({ author, message, parentId }) => {
   };
 };
 
-export { fetchMessagesApi, createMessageApi };
+const deleteMessageApi = ({ id }) => {
+  // return fetch("url").then((res) => {
+  //   return res.json();
+  // });
+  return {
+    message: {
+      id,
+    },
+  };
+};
+
+export { fetchMessagesApi, createMessageApi, deleteMessageApi };

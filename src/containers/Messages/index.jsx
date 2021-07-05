@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../redux/messages/actionCreators";
-import { Message } from "./Message";
+import Message from "./Message";
 import styles from "./styles.module.css";
 
 const Messages = ({ getMessages, messages, fetching, error }) => {
@@ -12,7 +12,7 @@ const Messages = ({ getMessages, messages, fetching, error }) => {
     <div className={styles.messages}>
       {fetching ? <div>Loading... </div> : null}
       {messages && messages.length > 0
-        ? messages.map((m) => <Message {...m} />)
+        ? messages.map((m, i) => <Message key={m.id + m.message} {...m} />)
         : null}
       {error ? <div>Error</div> : null}
     </div>

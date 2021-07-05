@@ -5,6 +5,9 @@ import {
   CREATE_MESSAGE_REQUEST,
   CREATE_MESSAGE_SUCCESS,
   CREATE_MESSAGE_ERROR,
+  DELETE_MESSAGE_REQUEST,
+  DELETE_MESSAGE_SUCCESS,
+  DELETE_MESSAGE_ERROR,
 } from "./actionTypes";
 
 export const getMessagesRequest = () => ({
@@ -41,6 +44,27 @@ export const createMessageSuccess = (data = {}) => ({
 
 export const createMessageError = (message) => ({
   type: CREATE_MESSAGE_ERROR,
+  payload: {
+    message,
+  },
+});
+
+export const deleteMessageRequest = (data) => ({
+  type: DELETE_MESSAGE_REQUEST,
+  payload: {
+    data,
+  },
+});
+
+export const deleteMessageSuccess = (data = {}) => ({
+  type: DELETE_MESSAGE_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+export const deleteMessageError = (message) => ({
+  type: DELETE_MESSAGE_ERROR,
   payload: {
     message,
   },

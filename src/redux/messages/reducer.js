@@ -51,6 +51,25 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           error: payload.message,
         },
       };
+    case types.DELETE_MESSAGE_SUCCESS:
+      const messages = state.allMessages.result.filter(
+        (m) => m.id !== payload.data.id
+      );
+      return {
+        ...state,
+        allMessages: {
+          ...INITIAL_STATE.allMessages,
+          result: messages,
+        },
+      };
+    case types.DELETE_MESSAGE_ERROR:
+      return {
+        ...state,
+        allMessages: {
+          ...INITIAL_STATE.allMessages,
+          error: payload.message,
+        },
+      };
     default:
       return state;
   }

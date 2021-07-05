@@ -39,9 +39,12 @@
 .message__footer > p {
   color: var(--primary-button-background);
   cursor: pointer;
-  margin-left: 10px;
+  margin-left: 2px;
 }
 
 .message__footer > svg {
   cursor: pointer;
+  height: 20px;
+  margin-left: 20px;
+  width: 20px;
 }
