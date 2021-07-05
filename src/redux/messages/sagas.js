@@ -26,8 +26,11 @@ function* createMessage({ payload }) {
       message,
       parentId,
     });
-
-    yield put(actions.createMessageSuccess(messageResponse));
+    if (parentId) {
+      yield put(actions.createMessageReplySuccess(messageResponse));
+    } else {
+      yield put(actions.createMessageSuccess(messageResponse));
+    }
   } catch (e) {
     yield put(actions.createMessageError(e.message));
   }

@@ -4,6 +4,7 @@ import {
   GET_MESSAGES_ERROR,
   CREATE_MESSAGE_REQUEST,
   CREATE_MESSAGE_SUCCESS,
+  CREATE_MESSAGE_REPLY_SUCCESS,
   CREATE_MESSAGE_ERROR,
   DELETE_MESSAGE_REQUEST,
   DELETE_MESSAGE_SUCCESS,
@@ -37,6 +38,13 @@ export const createMessageRequest = (data) => ({
 
 export const createMessageSuccess = (data = {}) => ({
   type: CREATE_MESSAGE_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+export const createMessageReplySuccess = (data = {}) => ({
+  type: CREATE_MESSAGE_REPLY_SUCCESS,
   payload: {
     data,
   },
