@@ -1,9 +1,10 @@
-import { Logo } from "./components/Logo";
+import { Navbar } from "./containers/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <Logo /> App
+      <Navbar />
+      App
     </div>
   );
 }
