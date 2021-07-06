@@ -72,6 +72,40 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           error: payload.message,
         },
       };
+    case types.EDIT_MESSAGE_SUCCESS:
+      const editedMessages = state.allMessages.result.map((mj) => {
+        if (mj.id === payload.data.id) {
+          mj = { ...mj, ...payload.data };
+        }
+        return mj;
+      });
+      return {
+        ...state,
+        allMessages: {
+          ...INITIAL_STATE.allMessages,
+          result: editedMessages,
+        },
+      };
+    case types.EDIT_MESSAGE_REPLY_SUCCESS:
+      const editedThreads = { ...state.threads };
+      newThreads[payload.data.parentId].map((mj) => {
+        if (mj.id === payload.data.id) {
+          mj = { ...mj, ...payload.data };
+        }
+        return mj;
+      });
+      return {
+        ...state,
+        threads: editedThreads,
+      };
+    case types.EDIT_MESSAGE_ERROR:
+      return {
+        ...state,
+        allMessages: {
+          ...INITIAL_STATE.allMessages,
+          error: payload.message,
+        },
+      };
     case types.DELETE_MESSAGE_SUCCESS:
       const messagesDel = state.allMessages.result.filter(
         (m) => m.id !== payload.data.id

@@ -10,6 +10,7 @@ import styles from "./styles.module.css";
 const Messages = ({
   getMessages,
   deleteMessage,
+  editMessage,
   messages,
   fetching,
   error,
@@ -70,8 +71,9 @@ const Messages = ({
         open={showEditModal}
         closeModal={handleEditModal}
         messageToEdit={messageToEdit}
-        handleEdit={() => {
-          // deleteMessage(messageToDelete);
+        handleEdit={(msg) => {
+          editMessage(msg);
+          handleEditModal();
         }}
       />
     </div>
@@ -87,6 +89,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getMessages: () => dispatch(actions.getMessagesRequest()),
   deleteMessage: (data) => dispatch(actions.deleteMessageRequest(data)),
+  editMessage: (data) => dispatch(actions.editMessageRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages);

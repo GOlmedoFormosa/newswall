@@ -9,6 +9,10 @@ import {
   DELETE_MESSAGE_REQUEST,
   DELETE_MESSAGE_SUCCESS,
   DELETE_MESSAGE_ERROR,
+  EDIT_MESSAGE_REQUEST,
+  EDIT_MESSAGE_SUCCESS,
+  EDIT_MESSAGE_REPLY_SUCCESS,
+  EDIT_MESSAGE_ERROR,
 } from "./actionTypes";
 
 export const getMessagesRequest = () => ({
@@ -73,6 +77,34 @@ export const deleteMessageSuccess = (data = {}) => ({
 
 export const deleteMessageError = (message) => ({
   type: DELETE_MESSAGE_ERROR,
+  payload: {
+    message,
+  },
+});
+
+export const editMessageRequest = (data) => ({
+  type: EDIT_MESSAGE_REQUEST,
+  payload: {
+    data,
+  },
+});
+
+export const editMessageSuccess = (data = {}) => ({
+  type: EDIT_MESSAGE_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+export const editMessageReplySuccess = (data = {}) => ({
+  type: EDIT_MESSAGE_REPLY_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+export const editMessageError = (message) => ({
+  type: EDIT_MESSAGE_ERROR,
   payload: {
     message,
   },

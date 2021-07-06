@@ -66,4 +66,18 @@ const deleteMessageApi = ({ id }) => {
   };
 };
 
-export { fetchMessagesApi, createMessageApi, deleteMessageApi };
+const editMessageApi = ({ id, author, message, parentId }) => {
+  // return fetch("url").then((res) => {
+  //   return res.json();
+  // });
+  return {
+    message: {
+      id,
+      author,
+      message,
+      parentId,
+    },
+  };
+};
+
+export { fetchMessagesApi, createMessageApi, deleteMessageApi, editMessageApi };
