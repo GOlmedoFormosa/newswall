@@ -5,7 +5,14 @@ import { connect } from "react-redux";
 import * as actions from "../../../redux/messages/actionCreators";
 import styles from "./styles.module.css";
 
-const Message = ({ id, message, author, deleteMessage, threads }) => (
+const Message = ({
+  id,
+  message,
+  author,
+  openModal,
+  deleteMessage,
+  threads,
+}) => (
   <div className={styles.message}>
     <div className={styles.message__number}>#{id}</div>
     <div className={styles.message__body}>
@@ -19,7 +26,7 @@ const Message = ({ id, message, author, deleteMessage, threads }) => (
       </div>
       <div className={styles.message__footer}>
         <DeleteIcon onClick={(e) => deleteMessage({ id, message, author })} />
-        <EditIcon />
+        <EditIcon onClick={openModal} />
         {threads[id] && <p>{`${threads[id].length}`} Reply</p>}
         <ReplyIcon />
       </div>
