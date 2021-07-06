@@ -15,33 +15,22 @@
   border-radius: 5px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  position: relative;
   min-height: 200px;
   max-height: 500px;
-  position: relative;
   min-width: 300px;
   max-width: 800px;
   z-index: 10;
 }
 
 .content {
-  align-items: center;
+  margin-top: 50px;
   color: #141414;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   line-height: 1.8;
+  padding: 20px;
 }
 .content p {
   margin-bottom: 1rem;
-}
-
-.content button {
-  background-color: #141414;
-  border: none;
-  color: #fff;
-  padding: 10px 24px;
 }
 
 .close {

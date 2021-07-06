@@ -2,22 +2,22 @@ import React, { useRef, useEffect, useCallback } from "react";
 import { ReactComponent as DeleteIcon } from "../../assets/images/icons/delete.svg";
 import styles from "./styles.module.css";
 
-const Modal = ({ show, setShow, children }) => {
+const Modal = ({ open, closeModal, children }) => {
   const modalRef = useRef(null);
 
-  const closeModal = (e) => {
+  const handleCloseModal = (e) => {
     if (modalRef.current === e.target) {
-      setShow(false);
+      closeModal();
     }
   };
 
   const keyPress = useCallback(
     (e) => {
-      if (e.key === "Escape" && show) {
-        setShow(false);
+      if (e.key === "Escape" && open) {
+        closeModal();
       }
     },
-    [setShow, show]
+    [closeModal, open]
   );
 
   useEffect(() => {
@@ -25,11 +25,14 @@ const Modal = ({ show, setShow, children }) => {
     return () => document.removeEventListener("keydown", keyPress);
   }, [keyPress]);
 
-  return show ? (
+  return open ? (
     <div className={styles.background} ref={modalRef} onClick={closeModal}>
       <div className={styles.container}>
         <div className={styles.content}>{children}</div>
-        <DeleteIcon className={styles.close} onClick={() => setShow(!show)} />
+        <DeleteIcon
+          className={styles.close}
+          onClick={(e) => handleCloseModal(e)}
+        />
       </div>
     </div>
   ) : null;

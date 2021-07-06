@@ -1,0 +1,23 @@
+.messages__delete,
+.messages__cancel {
+  font-weight: 900;
+  border-radius: 20px;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: auto;
+  width: 150px;
+}
+.messages_footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.messages__delete {
+  background-color: var(--primary-button-background);
+  color: var(--primary-button-color);
+}
+
+.messages__cancel {
+  background-color: var(--secundary-button-background);
+  color: var(--secundary-button-color);
+}

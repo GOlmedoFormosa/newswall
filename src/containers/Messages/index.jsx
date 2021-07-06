@@ -2,14 +2,29 @@ import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../redux/messages/actionCreators";
 import Message from "./Message";
-import Modal from "../../components/Modal";
+import { DeleteModal } from "../../containers/Modals/DeleteModal";
 
 import styles from "./styles.module.css";
 
-const Messages = ({ getMessages, messages, fetching, error }) => {
+const Messages = ({
+  getMessages,
+  deleteMessage,
+  messages,
+  fetching,
+  error,
+}) => {
   const [showModal, setShowModal] = useState(false);
+  const [messageToDelete, setMessageToDelete] = useState(null);
   const openModal = () => {
     setShowModal(!showModal);
+    if (showModal) {
+      setMessageToDelete(null);
+    }
+  };
+
+  const handleDeleteMessage = (message) => {
+    setMessageToDelete(message);
+    openModal();
   };
 
   useEffect(() => {
@@ -20,13 +35,22 @@ const Messages = ({ getMessages, messages, fetching, error }) => {
       {fetching ? <div>Loading... </div> : null}
       {messages && messages.length > 0
         ? messages.map((m, i) => (
-            <Message key={m.id + m.message} {...m} openModal={openModal} />
+            <Message
+              key={m.id + m.message}
+              {...m}
+              deleteMessage={handleDeleteMessage}
+            />
           ))
         : null}
       {error ? <div>Error</div> : null}
-      <Modal show={showModal} setShow={setShowModal}>
-        <div>test</div>
-      </Modal>
+      <DeleteModal
+        open={showModal}
+        closeModal={openModal}
+        message={messageToDelete}
+        handleDelete={() => {
+          deleteMessage(messageToDelete);
+        }}
+      />
     </div>
   );
 };
@@ -39,6 +63,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getMessages: () => dispatch(actions.getMessagesRequest()),
+  deleteMessage: (data) => dispatch(actions.deleteMessageRequest(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Messages);

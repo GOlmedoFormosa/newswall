@@ -2,7 +2,6 @@ import { ReactComponent as ReplyIcon } from "../../../assets/images/icons/reply.
 import { ReactComponent as EditIcon } from "../../../assets/images/icons/edit.svg";
 import { ReactComponent as DeleteIcon } from "../../../assets/images/icons/delete.svg";
 import { connect } from "react-redux";
-import * as actions from "../../../redux/messages/actionCreators";
 import styles from "./styles.module.css";
 
 const Message = ({
@@ -25,7 +24,7 @@ const Message = ({
         </div>
       </div>
       <div className={styles.message__footer}>
-        <DeleteIcon onClick={(e) => deleteMessage({ id, message, author })} />
+        <DeleteIcon onClick={() => deleteMessage({ id, message, author })} />
         <EditIcon onClick={openModal} />
         {threads[id] && <p>{`${threads[id].length}`} Reply</p>}
         <ReplyIcon />
@@ -38,8 +37,4 @@ const mapStateToProps = (state) => ({
   threads: state.messages.threads,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  deleteMessage: (data) => dispatch(actions.deleteMessageRequest(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Message);
+export default connect(mapStateToProps, null)(Message);
