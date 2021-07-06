@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../redux/messages/actionCreators";
 import Message from "./Message";
 import { DeleteModal } from "../../containers/Modals/DeleteModal";
+import { EditModal } from "../../containers/Modals/EditModal";
 
 import styles from "./styles.module.css";
 
@@ -13,18 +14,30 @@ const Messages = ({
   fetching,
   error,
 }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [messageToDelete, setMessageToDelete] = useState(null);
-  const openModal = () => {
-    setShowModal(!showModal);
-    if (showModal) {
+  const [messageToEdit, setMessageToEdit] = useState(null);
+  const handleDeleteModal = () => {
+    setShowDeleteModal(!showDeleteModal);
+    if (showDeleteModal) {
       setMessageToDelete(null);
     }
   };
-
+  const handleEditModal = () => {
+    setShowEditModal(!showEditModal);
+    if (showEditModal) {
+      setMessageToEdit(null);
+    }
+  };
   const handleDeleteMessage = (message) => {
     setMessageToDelete(message);
-    openModal();
+    handleDeleteModal();
+  };
+
+  const handleEditMessage = (message) => {
+    setMessageToEdit(message);
+    handleEditModal();
   };
 
   useEffect(() => {
@@ -39,16 +52,26 @@ const Messages = ({
               key={m.id + m.message}
               {...m}
               deleteMessage={handleDeleteMessage}
+              editMessage={handleEditMessage}
             />
           ))
         : null}
       {error ? <div>Error</div> : null}
       <DeleteModal
-        open={showModal}
-        closeModal={openModal}
+        open={showDeleteModal}
+        closeModal={handleDeleteModal}
         message={messageToDelete}
         handleDelete={() => {
           deleteMessage(messageToDelete);
+          handleDeleteModal();
+        }}
+      />
+      <EditModal
+        open={showEditModal}
+        closeModal={handleEditModal}
+        messageToEdit={messageToEdit}
+        handleEdit={() => {
+          // deleteMessage(messageToDelete);
         }}
       />
     </div>

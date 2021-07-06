@@ -8,8 +8,8 @@ const Message = ({
   id,
   message,
   author,
-  openModal,
   deleteMessage,
+  editMessage,
   threads,
 }) => (
   <div className={styles.message}>
@@ -25,7 +25,7 @@ const Message = ({
       </div>
       <div className={styles.message__footer}>
         <DeleteIcon onClick={() => deleteMessage({ id, message, author })} />
-        <EditIcon onClick={openModal} />
+        <EditIcon onClick={() => editMessage({ id, message, author })} />
         {threads[id] && <p>{`${threads[id].length}`} Reply</p>}
         <ReplyIcon />
       </div>

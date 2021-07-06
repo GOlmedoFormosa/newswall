@@ -1,14 +1,10 @@
-import React, { useRef, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { ReactComponent as DeleteIcon } from "../../assets/images/icons/delete.svg";
 import styles from "./styles.module.css";
 
 const Modal = ({ open, closeModal, children }) => {
-  const modalRef = useRef(null);
-
-  const handleCloseModal = (e) => {
-    if (modalRef.current === e.target) {
-      closeModal();
-    }
+  const handleCloseModal = () => {
+    closeModal();
   };
 
   const keyPress = useCallback(
@@ -26,8 +22,8 @@ const Modal = ({ open, closeModal, children }) => {
   }, [keyPress]);
 
   return open ? (
-    <div className={styles.background} ref={modalRef} onClick={closeModal}>
-      <div className={styles.container}>
+    <div className={styles.background} onClick={closeModal}>
+      <div className={styles.container} onClick={(e) => e.stopPropagation()}>
         <div className={styles.content}>{children}</div>
         <DeleteIcon
           className={styles.close}
