@@ -1,84 +1,56 @@
+const url = process.env.REACT_APP_API_URL;
+
 const fetchMessagesApi = () => {
-  // return fetch("url").then((res) => {
-  //   return res.json();
-  // });
-  return {
-    messages: [
-      {
-        id: 1,
-        message:
-          "A Thread lalalla allala alla la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalalala lala a lala al a llallalalalallalalallalala",
-        parentId: null,
-        author: 1,
-      },
-      {
-        id: 2,
-        message: "A Reply",
-        parentId: 1,
-        author: 1,
-      },
-      {
-        id: 3,
-        message:
-          "A Thread lalalla allala alla la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalalala lala a lala al a llallalalalallalalallalala",
-        parentId: null,
-        author: 1,
-      },
-      {
-        id: 4,
-        message: "A Thread",
-        parentId: null,
-        author: 1,
-      },
-      {
-        id: 5,
-        message:
-          "A Thread lalalla allala alla la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalala la lala a lala al a llallalalalallalalallalalala lala a lala al a llallalalalallalalallalala",
-        parentId: null,
-        author: 1,
-      },
-    ],
-  };
+  return fetch(`${url}/messages`).then((res) => {
+    return res.json();
+  });
 };
 
 const createMessageApi = ({ author, message, parentId }) => {
-  // return fetch("url").then((res) => {
-  //   return res.json();
-  // });
-  return {
-    message: {
-      id: 1,
+  return fetch(`${url}/messages`, {
+    method: "POST",
+    body: JSON.stringify({
       author: author || 1,
       message,
       parentId,
+    }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-  };
+  }).then((res) => {
+    return res.json();
+  });
 };
 
-const deleteMessageApi = ({ id, parentId }) => {
-  // return fetch("url").then((res) => {
-  //   return res.json();
-  // });
-  return {
-    message: {
-      id,
-      parentId,
+const deleteMessageApi = ({ id }) => {
+  return fetch(`${url}/messages/${id}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-  };
+  }).then((res) => {
+    return res.json();
+  });
 };
 
 const editMessageApi = ({ id, author, message, parentId }) => {
-  // return fetch("url").then((res) => {
-  //   return res.json();
-  // });
-  return {
-    message: {
+  return fetch(`${url}/messages/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({
       id,
-      author,
+      author: author || 1,
       message,
       parentId,
+    }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-  };
+  }).then((res) => {
+    return res.json();
+  });
 };
 
 export { fetchMessagesApi, createMessageApi, deleteMessageApi, editMessageApi };

@@ -11,6 +11,7 @@ import {
 function* getMessages() {
   try {
     const { messages } = yield call(fetchMessagesApi);
+    // TODO add date for the creation of messages so we can get it based on that.
     // TODO delete this once we update the GET api with desc parameters.
     messages.reverse();
     yield put(actions.getMessagesSuccess(messages));
@@ -26,11 +27,20 @@ function* watchGetMessagesRequest() {
 function* createMessage({ payload }) {
   try {
     const { author, message, parentId } = payload.data;
-    const { message: messageResponse } = yield call(createMessageApi, {
+    let { message: messageResponse } = yield call(createMessageApi, {
       author,
       message,
       parentId,
     });
+    // TODO delete this once we update the API, I believe the api should return the new
+    // message with its generated id.
+    messageResponse = {
+      ...messageResponse,
+      id: messageResponse.id || Math.floor(Math.random() * 10000),
+      author: author || 1,
+      message,
+      parentId,
+    };
     if (parentId) {
       yield put(actions.createMessageReplySuccess(messageResponse));
     } else {
