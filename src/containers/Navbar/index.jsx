@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Logo } from "../../components/Logo";
 import styles from "./styles.module.css";
 import { setUserSession, getUser } from "../../utils/auth";
