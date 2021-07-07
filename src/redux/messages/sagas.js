@@ -80,12 +80,22 @@ function* watchDeleteMessageRequest() {
 function* editMessage({ payload }) {
   try {
     const { id, author, message, parentId } = payload.data;
-    const { message: messageResponse } = yield call(editMessageApi, {
+    let { message: messageResponse } = yield call(editMessageApi, {
       id,
       author,
       message,
       parentId,
     });
+
+    // TODO delete this once we update the API, I believe the api should return the edited
+    // message.
+    messageResponse = {
+      ...messageResponse,
+      id,
+      author,
+      message,
+      parentId,
+    };
     if (parentId) {
       yield put(actions.editMessageReplySuccess(messageResponse));
     } else {
