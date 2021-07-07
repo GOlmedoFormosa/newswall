@@ -1,0 +1,30 @@
+.container {
+  margin-bottom: 4px;
+}
+
+.message_container {
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.message_container:hover {
+  background-color: var(--secundary-button-background);
+}
+
+.message {
+  margin-bottom: 4px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions > svg {
+  cursor: pointer;
+  height: 20px;
+  margin-left: 20px;
+  width: 20px;
+}

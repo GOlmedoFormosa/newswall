@@ -46,7 +46,13 @@ const Message = ({
           </div>
         </div>
       </div>
-      {showReply ? <Reply parentId={id} /> : null}
+      {showReply ? (
+        <Reply
+          parentId={id}
+          deleteMessage={deleteMessage}
+          editMessage={editMessage}
+        />
+      ) : null}
     </>
   );
 };

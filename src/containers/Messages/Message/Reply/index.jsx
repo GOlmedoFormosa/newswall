@@ -1,9 +1,10 @@
 import { useState, useCallback } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../../redux/messages/actionCreators";
+import Replies from "./Replies";
 import styles from "./styles.module.css";
 
-const Reply = ({ parentId, createMessage }) => {
+const Reply = ({ parentId, createMessage, editMessage, deleteMessage }) => {
   const [message, setMessage] = useState("");
   const handleReply = useCallback(() => {
     if (message.length > 0) {
@@ -21,6 +22,11 @@ const Reply = ({ parentId, createMessage }) => {
   );
   return (
     <div className={styles.container}>
+      <Replies
+        parentId={parentId}
+        deleteMessage={deleteMessage}
+        editMessage={editMessage}
+      />
       <div className={styles.reply_input_container}>
         <input
           onChange={(e) => setMessage(e.target.value)}

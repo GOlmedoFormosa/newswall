@@ -87,8 +87,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         },
       };
     case types.EDIT_MESSAGE_REPLY_SUCCESS:
-      const editedThreads = { ...state.threads };
-      newThreads[payload.data.parentId].map((mj) => {
+      let editedThreads = { ...state.threads };
+      editedThreads[payload.data.parentId] = editedThreads[
+        payload.data.parentId
+      ].map((mj) => {
         if (mj.id === payload.data.id) {
           mj = { ...mj, ...payload.data };
         }
