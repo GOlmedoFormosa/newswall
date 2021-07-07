@@ -25,6 +25,7 @@
   flex: 1;
   margin-left: 20px;
   font-size: 20px;
+  width: 100%;
 }
 
 .messageBox__new {
@@ -36,4 +37,25 @@
   margin-top: 20px;
   margin-left: auto;
   width: 150px;
+}
+
+@media (max-width: 768px) {
+  .messageBox > form {
+    width: 80%;
+  }
+}
+
+@media (max-width: 896px) {
+  .messageBox__input {
+    padding: 20px 10px;
+    width: calc(100% - 40px);
+  }
+
+  .messageBox__input > input {
+    font-size: 16px;
+  }
+
+  .messageBox__new {
+    width: 80px;
+  }
 }
