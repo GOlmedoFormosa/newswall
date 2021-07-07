@@ -7,6 +7,7 @@ import {
   deleteMessageApi,
   editMessageApi,
 } from "./api";
+import { getUser } from "../../utils/auth";
 
 function* getMessages() {
   try {
@@ -26,9 +27,10 @@ function* watchGetMessagesRequest() {
 
 function* createMessage({ payload }) {
   try {
-    const { author, message, parentId } = payload.data;
+    const { message, parentId } = payload.data;
+    const user = getUser();
     let { message: messageResponse } = yield call(createMessageApi, {
-      author,
+      author: user.id,
       message,
       parentId,
     });
@@ -37,7 +39,7 @@ function* createMessage({ payload }) {
     messageResponse = {
       ...messageResponse,
       id: messageResponse.id || Math.floor(Math.random() * 10000),
-      author: author || 1,
+      author: user.id,
       message,
       parentId,
     };

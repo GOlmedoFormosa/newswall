@@ -4,6 +4,7 @@ import { ReactComponent as ReplyIcon } from "../../../assets/images/icons/reply.
 import { ReactComponent as EditIcon } from "../../../assets/images/icons/edit.svg";
 import { ReactComponent as DeleteIcon } from "../../../assets/images/icons/delete.svg";
 import Reply from "./Reply";
+import { getUser } from "../../../utils/auth";
 import styles from "./styles.module.css";
 
 const Message = ({
@@ -16,6 +17,7 @@ const Message = ({
   threads,
 }) => {
   const [showReply, setShowDisplay] = useState(false);
+  const user = getUser();
   return (
     <>
       <div className={styles.message}>
@@ -30,12 +32,18 @@ const Message = ({
             </div>
           </div>
           <div className={styles.message__footer}>
-            <DeleteIcon
-              onClick={() => deleteMessage({ id, message, author, parentId })}
-            />
-            <EditIcon
-              onClick={() => editMessage({ id, message, author, parentId })}
-            />
+            {String(user.id) === String(author) ? (
+              <>
+                <DeleteIcon
+                  onClick={() =>
+                    deleteMessage({ id, message, author, parentId })
+                  }
+                />
+                <EditIcon
+                  onClick={() => editMessage({ id, message, author, parentId })}
+                />
+              </>
+            ) : null}
 
             {threads[id] && (
               <p onClick={() => setShowDisplay(true)}>
