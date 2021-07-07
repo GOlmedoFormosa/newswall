@@ -48,7 +48,7 @@ const createMessageApi = ({ author, message, parentId }) => {
   return {
     message: {
       id: 1,
-      author,
+      author: author || 1,
       message,
       parentId,
     },

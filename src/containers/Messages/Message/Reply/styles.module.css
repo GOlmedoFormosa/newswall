@@ -1,0 +1,23 @@
+.container {
+  background-color: var(--bg-color);
+  margin-bottom: 5px;
+  width: 45%;
+}
+.reply_input_container {
+  width: 100%;
+}
+
+.reply_input_container input {
+  border-radius: 5px;
+  height: 25px;
+  width: calc(100% - 60px);
+}
+
+.reply_input_container button {
+  border-radius: 5px;
+  background-color: var(--primary-button-background);
+  color: var(--primary-button-color);
+  padding: 5px 8px 5px 8px;
+  margin-left: 5px;
+  width: 50px;
+}
