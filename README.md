@@ -1,6 +1,41 @@
-# Getting Started with Create React App
+# Storytel Frontend Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requirements
+
+Design and build a “single page application” to implement a simple public message board app with
+the following features:-
+
+1. A client can create a new public message thread
+2. A client can add a public reply to a message thread
+3. A client can modify their own messages
+4. A client can delete their own messages
+5. Public message threads and replies are viewable
+
+## Technologies Used
+
+- [Yarn](https://yarnpkg.com/)
+- [ReactJs](https://reactjs.org/)
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed on your local machine:
+
+- [Yarn](https://yarnpkg.com/)
+
+## Installing/Running locally
+
+- Make sure you have `Yarn` installed.
+- Run
+
+  ```bash
+    - git clone https://github.com/GOlmedoFormosa/newswall.git
+    - cd newswall
+    - yarn install
+  ```
+
+- Create/configure `.env` environment with your credentials. A sample `.env.example` file has been provided to get you started. Make a duplicate of `.env.example` and rename to `.env`, then configure your credentials.
 
 ## Available Scripts
 
