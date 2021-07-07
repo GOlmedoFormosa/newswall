@@ -104,7 +104,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         allMessages: {
-          ...INITIAL_STATE.allMessages,
+          ...state.allMessages,
           error: payload.message,
         },
       };
@@ -119,11 +119,20 @@ export default (state = INITIAL_STATE, { type, payload }) => {
           result: messagesDel,
         },
       };
+    case types.DELETE_MESSAGE_REPLY_SUCCESS:
+      let deletedThreads = { ...state.threads };
+      deletedThreads[payload.data.parentId] = deletedThreads[
+        payload.data.parentId
+      ].filter((m) => m.id !== payload.data.id);
+      return {
+        ...state,
+        threads: deletedThreads,
+      };
     case types.DELETE_MESSAGE_ERROR:
       return {
         ...state,
         allMessages: {
-          ...INITIAL_STATE.allMessages,
+          ...state.allMessages,
           error: payload.message,
         },
       };

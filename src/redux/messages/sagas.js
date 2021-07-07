@@ -47,12 +47,17 @@ function* watchCreateMessageRequest() {
 
 function* deleteMessage({ payload }) {
   try {
-    const { id } = payload.data;
+    const { id, parentId } = payload.data;
     const { message: messageResponse } = yield call(deleteMessageApi, {
       id,
+      parentId,
     });
 
-    yield put(actions.deleteMessageSuccess(messageResponse));
+    if (parentId) {
+      yield put(actions.deleteMessageReplySuccess(messageResponse));
+    } else {
+      yield put(actions.deleteMessageSuccess(messageResponse));
+    }
   } catch (e) {
     yield put(actions.deleteMessageError(e.message));
   }

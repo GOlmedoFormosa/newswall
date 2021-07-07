@@ -8,6 +8,7 @@ import {
   CREATE_MESSAGE_ERROR,
   DELETE_MESSAGE_REQUEST,
   DELETE_MESSAGE_SUCCESS,
+  DELETE_MESSAGE_REPLY_SUCCESS,
   DELETE_MESSAGE_ERROR,
   EDIT_MESSAGE_REQUEST,
   EDIT_MESSAGE_SUCCESS,
@@ -70,6 +71,13 @@ export const deleteMessageRequest = (data) => ({
 
 export const deleteMessageSuccess = (data = {}) => ({
   type: DELETE_MESSAGE_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+export const deleteMessageReplySuccess = (data = {}) => ({
+  type: DELETE_MESSAGE_REPLY_SUCCESS,
   payload: {
     data,
   },

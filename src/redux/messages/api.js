@@ -55,13 +55,14 @@ const createMessageApi = ({ author, message, parentId }) => {
   };
 };
 
-const deleteMessageApi = ({ id }) => {
+const deleteMessageApi = ({ id, parentId }) => {
   // return fetch("url").then((res) => {
   //   return res.json();
   // });
   return {
     message: {
       id,
+      parentId,
     },
   };
 };
