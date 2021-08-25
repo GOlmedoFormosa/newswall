@@ -17,7 +17,7 @@ export const Navbar = () => {
             });
             window.location.reload();
           }}
-          value={user.id}
+          value={user ? user.id : ""}
         >
           <option value="1">Gustavo Olmedo</option>
           <option value="2">Sofie Söderström</option>
