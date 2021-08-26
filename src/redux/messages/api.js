@@ -1,13 +1,13 @@
-const url = process.env.REACT_APP_API_URL;
+import { API_URL } from "../../utils/config";
 
 const fetchMessagesApi = () => {
-  return fetch(`${url}/messages`).then((res) => {
+  return fetch(`${API_URL}/messages`).then((res) => {
     return res.json();
   });
 };
 
 const createMessageApi = ({ author, message, parentId }) => {
-  return fetch(`${url}/messages`, {
+  return fetch(`${API_URL}/messages`, {
     method: "POST",
     body: JSON.stringify({
       author: author || 1,
@@ -24,7 +24,7 @@ const createMessageApi = ({ author, message, parentId }) => {
 };
 
 const deleteMessageApi = ({ id }) => {
-  return fetch(`${url}/messages/${id}`, {
+  return fetch(`${API_URL}/messages/${id}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
@@ -36,7 +36,7 @@ const deleteMessageApi = ({ id }) => {
 };
 
 const editMessageApi = ({ id, author, message, parentId }) => {
-  return fetch(`${url}/messages/${id}`, {
+  return fetch(`${API_URL}/messages/${id}`, {
     method: "PUT",
     body: JSON.stringify({
       id,

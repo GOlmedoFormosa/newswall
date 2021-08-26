@@ -3,6 +3,11 @@ import { Navbar } from "./containers/Navbar";
 import { Wall as WallPage } from "./pages/Wall";
 import { setUserSession, getUser } from "./utils/auth";
 
+if (process.env.REACT_APP_API_MOCKING === "enabled") {
+  const { worker } = require("./mocks/browser");
+  worker.start();
+}
+
 function App() {
   useEffect(() => {
     const user = getUser();
