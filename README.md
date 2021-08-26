@@ -35,7 +35,7 @@ Ensure you have the following installed on your local machine:
     - yarn install
   ```
 
-- Create/configure `.env` environment with your credentials. A sample `.env.example` file has been provided to get you started. Make a duplicate of `.env.example` and rename to `.env`, then configure your credentials.
+- Create/configure `.env` environment with your credentials. A sample `.env.example` file has been provided to get you started. Make a duplicate of `.env.example` and rename to `.env`, then configure your credentials. Do not update the value for REACT_APP_API_URL_MOCK and REACT_APP_API_MOCKING.
 
 ## Available Scripts
 
