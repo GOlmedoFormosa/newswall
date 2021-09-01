@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Design and build a “single page application” to implement a simple public message board app with
+Design and build a "single page application" to implement a simple public message board app with
 the following features:
 
 1. A client can create a new public message thread
