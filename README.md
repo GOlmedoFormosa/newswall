@@ -3,7 +3,7 @@
 ## Requirements
 
 Design and build a “single page application” to implement a simple public message board app with
-the following features:-
+the following features:
 
 1. A client can create a new public message thread
 2. A client can add a public reply to a message thread
